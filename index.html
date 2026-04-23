@@ -424,6 +424,80 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 }
 .hdr-tool-btn:hover { border-color: var(--cyan); color: var(--cyan); }
 
+
+/* ─── REFERENCE BOARD ─── */
+.ref-board { display: flex; flex-direction: column; gap: 24px; }
+.ref-input-row { display: flex; gap: 10px; align-items: flex-start; }
+.ref-url-input { flex: 1; background: var(--bg3); border: 1px solid var(--border2); border-radius: 10px; padding: 12px 16px; color: var(--text); font-size: 13px; outline: none; transition: border-color .15s; }
+.ref-url-input:focus { border-color: var(--cyan); }
+.ref-url-input::placeholder { color: var(--text3); }
+.ref-add-btn { background: linear-gradient(135deg,var(--cyan),var(--purple)); border: none; border-radius: 10px; padding: 12px 18px; color: #fff; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: opacity .15s; }
+.ref-add-btn:hover { opacity: .85; }
+.ref-add-btn:disabled { opacity: .4; cursor: not-allowed; }
+.ref-clusters { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.ref-cluster { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; }
+.ref-cluster-hdr { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.ref-cluster-title { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--text2); letter-spacing: .08em; }
+.ref-cluster-count { font-family: var(--mono); font-size: 9px; color: var(--text3); }
+.ref-card-list { padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+.ref-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; cursor: pointer; transition: border-color .15s; position: relative; }
+.ref-card:hover { border-color: var(--cyan); }
+.ref-card-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.ref-card-meta { font-family: var(--mono); font-size: 9px; color: var(--text3); display: flex; gap: 8px; flex-wrap: wrap; }
+.ref-card-genre { background: rgba(155,109,255,.12); color: var(--purple); border-radius: 4px; padding: 1px 6px; font-size: 9px; }
+.ref-card-mood { background: rgba(0,229,200,.08); color: var(--cyan); border-radius: 4px; padding: 1px 6px; font-size: 9px; }
+.ref-card-del { position: absolute; top: 6px; right: 8px; background: none; border: none; color: var(--text3); cursor: pointer; font-size: 12px; opacity: 0; transition: opacity .15s; }
+.ref-card:hover .ref-card-del { opacity: 1; }
+.ref-card-links { display: flex; gap: 5px; margin-top: 6px; }
+.ref-empty-cluster { padding: 20px; text-align: center; color: var(--text3); font-size: 11px; }
+
+/* Drop zone */
+.ref-drop-zone { border: 2px dashed var(--border2); border-radius: var(--rl); padding: 40px 20px; text-align: center; transition: all .2s; cursor: pointer; }
+.ref-drop-zone.drag-over { border-color: var(--cyan); background: rgba(0,229,200,.04); }
+.ref-drop-icon { font-size: 36px; margin-bottom: 12px; }
+.ref-drop-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.ref-drop-sub { font-size: 11px; color: var(--text3); line-height: 1.6; }
+.ref-analysis-result { margin-top: 16px; }
+.ref-section-title { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+.ref-stats-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.ref-stat-chip { background: var(--bg3); border: 1px solid var(--border2); border-radius: 20px; padding: 4px 12px; font-family: var(--mono); font-size: 10px; color: var(--text2); }
+
+
+/* ─── PLANNER RESULT CARDS ─── */
+.ai-result-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px;margin-bottom:12px}
+.ar-title{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.ar-text{font-size:12px;color:var(--text2);line-height:1.7}
+.ar-chips{display:flex;flex-direction:column;gap:8px}
+.ar-chip{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
+.ar-chip-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.ar-chip-reason{font-size:11px;color:var(--text3);line-height:1.5}
+/* ─── REF BOARD CARDS ─── */
+.ref-cluster{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:12px}
+.ref-cluster-hdr{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.ref-cluster-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.ref-cluster-count{font-family:var(--mono);font-size:9px;color:var(--text3)}
+.ref-card-list{padding:8px;display:flex;flex-direction:column;gap:6px}
+.ref-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;position:relative}
+.ref-card:hover{border-color:var(--cyan)}
+.ref-card-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px}
+.ref-card-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.ref-card-genre{background:rgba(155,109,255,.12);color:var(--purple);border-radius:4px;padding:1px 6px;font-size:9px;font-family:var(--mono)}
+.ref-card-mood{background:rgba(0,229,200,.08);color:var(--cyan);border-radius:4px;padding:1px 6px;font-size:9px;font-family:var(--mono)}
+.ref-card-del{position:absolute;top:6px;right:8px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:13px;opacity:0;transition:opacity .15s}
+.ref-card:hover .ref-card-del{opacity:1}
+.ref-stat-chip{background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:4px 12px;font-family:var(--mono);font-size:10px;color:var(--text2)}
+.spl-pack-item{display:flex;align-items:flex-start;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:6px}
+.spi-icon{color:var(--text3);flex-shrink:0;margin-top:2px}
+.spi-info{flex:1;min-width:0}
+.spi-q{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.spi-r{font-size:10px;color:var(--text3);margin-bottom:4px;line-height:1.5}
+.spi-links{display:flex;gap:5px;flex-wrap:wrap}
+.spi-link{font-family:var(--mono);font-size:9px;padding:2px 8px;border-radius:4px;text-decoration:none;border:1px solid}
+.spi-link.loop{background:rgba(0,229,200,.08);border-color:rgba(0,229,200,.2);color:var(--cyan)}
+.spi-link.shot{background:rgba(155,109,255,.08);border-color:rgba(155,109,255,.2);color:var(--purple)}
+.spi-link.pack{background:rgba(255,184,0,.08);border-color:rgba(255,184,0,.2);color:var(--gold)}
+.rsi-reason{font-size:10px;color:var(--text3);line-height:1.5;margin-top:3px}
+
 /* Responsive */
 @media(max-width:768px){
   .hdr-stat{display:none}
@@ -461,6 +535,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <button class="nav-t" onclick="switchTab('agencies',this)">🏢 에이전시 DNA</button>
   <button class="nav-t" onclick="switchTab('planner',this)">✨ 곡 아이디어 플래너</button>
   <button class="nav-t" onclick="switchTab('trend',this)">📰 오늘의 트렌드 브리핑</button>
+  <button class="nav-t" onclick="switchTab('refboard',this)">🎧 레퍼런스 보드</button>
 </div>
 
 <div class="main">
@@ -609,6 +684,71 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   </div>
 
 <div class="hist-sidebar"><div class="hist-hdr"><div class="hist-title">&#x1F4CB; &#xC800;&#xC7A5;&#xB41C; &#xD2B8;&#xB80C;&#xB4DC;</div><div id="trend-hist-count" style="font-family:var(--mono);font-size:10px;color:var(--text3)">0&#xAC1C;</div></div><div class="hist-list" id="trend-hist-list"><div class="hist-empty">&#xC800;&#xC7A5;&#xB41C; &#xBE0C;&#xB9AC;&#xD551; &#xC5C6;&#xC74C;</div></div></div></div>
+
+
+<!-- ─── REFERENCE BOARD TAB ─────────────────────────────────────── -->
+<div class="tab" id="tab-refboard" class="tab">
+  <div class="sec-hdr">
+    <div class="sec-t">🎧 레퍼런스 보드</div>
+    <div class="sec-s">외부 트랙 수집 & 분류 · 내 트랙 분석 & 레퍼런스 탐색</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+
+    <!-- LEFT -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="ai-form-card">
+        <div class="ai-form-title">🔗 레퍼런스 트랙 추가</div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:12px;line-height:1.7">Spotify, YouTube, SoundCloud URL 붙여넣기 → AI가 분석 후 장르/무드별로 분류</div>
+        <input style="width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:11px 14px;color:var(--text);font-size:12px;outline:none;margin-bottom:8px;box-sizing:border-box"
+          id="ref-url-input" type="text" placeholder="🎵 곡 이름 또는 URL — 예: NewJeans - How Sweet"/>
+        <div style="font-size:10px;color:var(--text3);margin-bottom:6px;padding:0 2px">
+          💡 <strong style="color:var(--text2)">곡 이름</strong>을 입력하면 가장 정확해요 (예: <code style="color:var(--cyan)">aespa - Supernova</code>)<br>
+          URL만 입력하면 분석이 부정확할 수 있어요
+        </div>
+        <input style="width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:11px 14px;color:var(--text);font-size:12px;outline:none;margin-bottom:10px;box-sizing:border-box"
+          id="ref-note-input" type="text" placeholder="💬 메모 (선택) — 이 훅 느낌 참고, BPM 비슷함..."/>
+        <button onclick="addReference()"
+          style="width:100%;background:linear-gradient(135deg,var(--cyan),var(--purple));border:none;border-radius:10px;padding:11px;color:#fff;font-size:12px;font-weight:700;cursor:pointer"
+          id="ref-add-btn">+ 추가 & 분석</button>
+      </div>
+      <div id="ref-stats-row" style="display:none;gap:8px;flex-wrap:wrap"></div>
+      <div id="ref-clusters">
+        <div style="text-align:center;padding:40px;color:var(--text3);font-size:12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl)">
+          URL을 추가하면 여기에 분류돼요
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="ai-form-card">
+        <div class="ai-form-title">🎛 내 트랙 분석</div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:12px;line-height:1.7">트랙 파일을 드롭하거나 특징을 묘사하면 레퍼런스 + 프로덕션 방향을 제시해요</div>
+        <div id="ref-drop-zone"
+          style="border:2px dashed var(--border2);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:12px"
+          ondragover="event.preventDefault();this.style.borderColor='var(--cyan)'"
+          ondragleave="this.style.borderColor='var(--border2)'"
+          ondrop="handleTrackDrop(event)"
+          onclick="document.getElementById('ref-file-input').click()">
+          <div style="font-size:28px;margin-bottom:8px">🎛</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">트랙 파일 드롭</div>
+          <div style="font-size:11px;color:var(--text3)">MP3, WAV, AIFF, M4A · 또는 클릭해서 선택</div>
+        </div>
+        <input type="file" id="ref-file-input" accept="audio/*" style="display:none" onchange="handleTrackFile(this)"/>
+        <div style="text-align:center;color:var(--text3);font-size:10px;font-family:var(--mono);margin-bottom:10px">— 또는 직접 묘사 —</div>
+        <textarea id="ref-track-desc"
+          style="width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:12px;color:var(--text);font-size:12px;resize:vertical;min-height:80px;outline:none;font-family:var(--kr);box-sizing:border-box"
+          placeholder="예: 120BPM 다크 트랩, 808 베이스 드롭, 여성 보컬 후렴, 글리치 신스 텍스처. 차갑고 강렬한 느낌..."></textarea>
+        <button onclick="analyzeMyTrack()"
+          style="margin-top:10px;width:100%;background:linear-gradient(135deg,var(--purple),var(--pink));border:none;border-radius:10px;padding:12px;color:#fff;font-size:12px;font-weight:700;cursor:pointer">
+          🔍 레퍼런스 찾기 + 방향 제시
+        </button>
+      </div>
+      <div id="ref-track-result"></div>
+    </div>
+
+  </div>
+</div>
 
 </div><!-- /.main -->
 
@@ -1308,17 +1448,21 @@ function renderAgencies() {
 
 // ─── TAB SWITCH ──────────────────────────────────────────────────
 function switchTab(name, btn) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.nav-t').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  btn.classList.add('active');
+  document.querySelectorAll('.tab').forEach(function(t) {
+    t.classList.remove('active');
+    t.style.display = '';
+  });
+  document.querySelectorAll('.nav-t').forEach(function(t) { t.classList.remove('active'); });
+  var target = document.getElementById('tab-' + name);
+  if (target) { target.classList.add('active'); target.style.display = 'block'; }
+  if (btn) btn.classList.add('active');
 }
 
 // ─── CLAUDE API CALL ─────────────────────────────────────────────
 async function callClaude(systemPrompt, userMsg, useWebSearch, maxTok, _unused) {
   if (!API_KEY) { openApiModal(); throw new Error('API 키가 없습니다. ⚙ 버튼을 눌러 입력해주세요.'); }
 
-  var model = (maxTok <= 3000) ? 'claude-haiku-4-5-20251001' : 'claude-sonnet-4-20250514';
+  var model = 'claude-haiku-4-5-20251001'; // Haiku confirmed working
   var tokens = maxTok || 3000;
   var TIMEOUT_MS = 90000;
 
@@ -1351,6 +1495,9 @@ async function callClaude(systemPrompt, userMsg, useWebSearch, maxTok, _unused) 
 
   var res = await Promise.race([fetchPromise, timeoutPromise]);
 
+  // Debug logging
+  console.log('[API] status:', res.status, 'ok:', res.ok, 'model:', model, 'tokens:', tokens);
+
   if (!res.ok) {
     var errData = await res.json().catch(function() { return {}; });
     var errMsg = (errData.error && errData.error.message) || '';
@@ -1358,57 +1505,51 @@ async function callClaude(systemPrompt, userMsg, useWebSearch, maxTok, _unused) 
     if (res.status === 403) throw new Error('[403] 접근 거부\n→ API 키 권한 문제입니다.');
     if (res.status === 429) throw new Error('[429] 요청 한도 초과\n→ 1분 후 다시 시도해주세요.');
     if (res.status === 529) throw new Error('[529] 서버 과부하\n→ 10~30초 후 다시 시도해주세요.');
-    throw new Error('[' + res.status + '] API 오류\n→ ' + (errMsg || '알 수 없는 오류'));
+    throw new Error('[' + res.status + '] API 오류\n→ ' + (errMsg || '알 수 없는 오류') + '\n→ 상태코드: ' + res.status);
   }
 
-  var data = await res.json();
+  var rawText = await res.text();
+  console.log('[API] raw response (first 300):', rawText.slice(0,300));
+  var data;
+  try { data = JSON.parse(rawText); } catch(pe) { throw new Error('Response parse error: ' + rawText.slice(0,100)); }
+
+  // Handle API error returned with 200 status
+  if (data.type === 'error') {
+    var eMsg = (data.error && data.error.message) || 'API 오류';
+    var eType = (data.error && data.error.type) || '';
+    throw new Error('[API_ERROR] ' + eMsg + (eType ? ' (' + eType + ')' : ''));
+  }
+
   var text = (data.content || [])
     .filter(function(b) { return b.type === 'text'; })
     .map(function(b) { return b.text; })
     .join(' ');
 
   if (!text || text.trim() === '') {
-    throw new Error('[EMPTY] 빈 응답\n→ 잠시 후 다시 시도해주세요.');
+    // Show full response for debugging
+    throw new Error('[EMPTY] 빈 응답\n→ 응답 타입: ' + (data.type||'unknown') + '\n→ 잠시 후 다시 시도해주세요.');
   }
   return text;
 }
 
 
 function parseJSON(text){
-  if(!text)return null;
-  var s = text;
-  // Remove markdown fences
-  var fenceMatch = s.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if(fenceMatch) s = fenceMatch[1].trim();
-  else s = s.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
-  // If JSON is truncated (no closing brace), try to close it
-  s = s.trim();
-  if(s && s[0] === '{' && s[s.length-1] !== '}') {
-    // Count open braces - try to close
-    var opens = (s.match(/\{/g)||[]).length;
-    var closes = (s.match(/\}/g)||[]).length;
-    var needed = opens - closes;
-    // Remove trailing comma/incomplete field before closing
-    s = s.replace(/,\s*"[^"]*"\s*:\s*[^,\}]*$/, '');
-    s = s.replace(/,\s*$/, '');
-    for(var ci=0; ci<needed && ci<10; ci++) s += '}';
-  }
-  // Try multiple extraction strategies
-  var fns=[
-    function(){return JSON.parse(s);},
-    function(){var a=s.indexOf('{'),b=s.lastIndexOf('}');if(a>=0&&b>a)return JSON.parse(s.slice(a,b+1));},
-    function(){
-      var a=s.indexOf('{');if(a<0)return null;
-      var d=0,inS=false,esc=false;
-      for(var i=a;i<s.length;i++){
-        var c=s[i];
-        if(esc){esc=false;continue;}
-        if(c==='\\'&&inS){esc=true;continue;}
-        if(c==='"'&&!esc){inS=!inS;continue;}
-        if(inS)continue;
-        if(c==='{')d++;
-        if(c==='}'){d--;if(d===0)return JSON.parse(s.slice(a,i+1));}
-      }return null;
+  if(!text) return null;
+  var s = text.trim();
+  // Remove ALL markdown fences aggressively
+  s = s.replace(/^```json\s*/i,'').replace(/^```\s*/,'').replace(/\s*```$/,'').trim();
+  // If still has fence in middle, extract between first { and last }
+  var a = s.indexOf('{'), b = s.lastIndexOf('}');
+  if(a < 0 || b < 0) return null;
+  s = s.slice(a, b+1);
+  var fns = [
+    function(){ return JSON.parse(s); },
+    function(){ 
+      // Try to fix truncated JSON
+      var opens=(s.match(/\{/g)||[]).length, closes=(s.match(/\}/g)||[]).length;
+      var fixed=s.replace(/,\s*$/,'');
+      for(var i=0;i<opens-closes&&i<10;i++) fixed+='}';
+      return JSON.parse(fixed);
     }
   ];
   for(var i=0;i<fns.length;i++){try{var r=fns[i]();if(r&&typeof r==='object')return r;}catch(e){}}
@@ -1416,21 +1557,149 @@ function parseJSON(text){
 }
 
 // ─── SONG PLANNER ────────────────────────────────────────────────
+
+function buildPlannerResult(d) {
+  var Q = encodeURIComponent;
+  var h = '';
+
+  // Concept summary
+  if (d.concept_summary) {
+    h += '<div class="ai-result-card">'
+      + '<div class="ar-title">💡 컨셉 요약</div>'
+      + '<div class="ar-text">' + d.concept_summary + '</div>'
+      + '</div>';
+  }
+
+  // Similar artists
+  var artists = d.similar_artists || [];
+  if (artists.length) {
+    h += '<div class="ai-result-card">'
+      + '<div class="ar-title">🎤 유사 아티스트</div>'
+      + '<div class="ar-chips">';
+    artists.forEach(function(a) {
+      h += '<div class="ar-chip">'
+        + '<div class="ar-chip-name"><a href="' + (a.spotify_url||'#') + '" target="_blank" style="color:inherit;text-decoration:none">' + a.name + '</a></div>'
+        + (a.reason ? '<div class="ar-chip-reason">' + a.reason + '</div>' : '')
+        + '</div>';
+    });
+    h += '</div></div>';
+  }
+
+  // Production brief
+  var pb = d.production_brief || {};
+  if (pb.genre || pb.bpm) {
+    h += '<div class="ai-result-card">'
+      + '<div class="ar-title">🎛 프로덕션 브리프</div>'
+      + '<div class="lead-sheet-grid">'
+      + (pb.genre ? '<div class="ls-field full"><div class="ls-label">장르</div><div class="ls-val pk">' + pb.genre + '</div></div>' : '')
+      + (pb.bpm ? '<div class="ls-field"><div class="ls-label">BPM</div><div class="ls-val mono">' + pb.bpm + '</div></div>' : '')
+      + (pb.key ? '<div class="ls-field"><div class="ls-label">Key</div><div class="ls-val cy">' + pb.key + '</div></div>' : '')
+      + (pb.chord_progression ? '<div class="ls-field full"><div class="ls-label">코드 진행</div><div class="ls-val mono">' + pb.chord_progression + '</div></div>' : '')
+      + (pb.hook_concept ? '<div class="ls-field full"><div class="ls-label">훅 컨셉</div><div class="ls-val pk">' + pb.hook_concept + '</div></div>' : '')
+      + (pb.production_notes ? '<div class="ls-field full"><div class="ls-label">프로덕션 노트</div><div class="ls-val">' + pb.production_notes + '</div></div>' : '')
+      + '</div></div>';
+  }
+
+  // Reference songs
+  var refs = d.reference_songs || [];
+  if (refs.length) {
+    h += '<div class="ai-result-card">'
+      + '<div class="ar-title">🎵 레퍼런스 곡</div>';
+    refs.forEach(function(s) {
+      var url = s.spotify_url || ('https://open.spotify.com/search/' + Q((s.title||'') + ' ' + (s.artist||'')));
+      h += '<div class="ref-song-item"><div class="rsi-info">'
+        + '<div class="rsi-title">' + s.title + '</div>'
+        + '<div class="rsi-artist">' + s.artist + (s.year?' · '+s.year:'') + (s.bpm?' · BPM '+s.bpm:'') + '</div>'
+        + (s.reason ? '<div class="rsi-reason">' + s.reason + '</div>' : '')
+        + '</div><div class="rsi-links"><a class="rsi-sp" href="' + url + '" target="_blank">' + SP_SVG + 'Spotify</a></div></div>';
+    });
+    h += '</div>';
+  }
+
+  // Splice packs
+  var spl = d.splice_packs || [];
+  if (spl.length) {
+    h += '<div class="ai-result-card">'
+      + '<div class="ar-title">🎛 Splice 샘플팩</div>';
+    spl.forEach(function(p) {
+      var bpmP = p.bpm_hint ? '&min_tempo='+(parseInt(p.bpm_hint)-8)+'&max_tempo='+(parseInt(p.bpm_hint)+8) : '';
+      var loopUrl = 'https://splice.com/sounds/search?q='+Q(p.query||'')+'&type=loops'+bpmP;
+      var shotUrl = 'https://splice.com/sounds/search?q='+Q(p.query||'')+'&type=one_shots'+bpmP;
+      h += '<div class="spl-pack-item"><div class="spi-icon">' + SPL_SVG + '</div>'
+        + '<div class="spi-info"><div class="spi-q">' + (p.query||'') + '</div>'
+        + (p.reason ? '<div class="spi-r">' + p.reason + '</div>' : '')
+        + '<div class="spi-links">'
+        + '<a class="spi-link loop" href="' + loopUrl + '" target="_blank">Loops</a>'
+        + '<a class="spi-link shot" href="' + shotUrl + '" target="_blank">One-Shots</a>'
+        + '</div></div></div>';
+    });
+    h += '</div>';
+  }
+
+  // Suno prompt
+  if (d.suno_prompt) {
+    var sp = d.suno_prompt;
+    if (!window.KPOP_PROMPTS) window.KPOP_PROMPTS = [];
+    var spIdx = window.KPOP_PROMPTS.push(sp) - 1;
+    h += '<div class="ai-result-card">'
+      + '<div class="ar-title">🎵 Suno AI 프롬프트 <span style="font-family:var(--mono);font-size:9px;color:var(--green)"> · ' + sp.length + '자</span></div>'
+      + '<div style="background:rgba(30,215,96,.04);border:1px solid rgba(30,215,96,.15);border-radius:10px;padding:14px">'
+      + '<div style="display:flex;justify-content:space-between;margin-bottom:6px">'
+      + '<span style="font-family:var(--mono);font-size:9px;color:var(--text3)">SUNO PROMPT</span>'
+      + '<button class="copy-btn" onclick="copyPrompt(window.KPOP_PROMPTS[' + spIdx + '],this)">복사</button>'
+      + '</div>'
+      + '<div style="font-family:var(--mono);font-size:11px;color:#1ED760;line-height:1.7">' + sp + '</div>'
+      + '<a style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;background:rgba(30,215,96,.1);border:1px solid rgba(30,215,96,.3);border-radius:7px;padding:7px 13px;color:#1ED760;font-size:11px;font-weight:600;text-decoration:none" href="https://suno.com" target="_blank">🎵 Suno에서 열기</a>'
+      + '</div></div>';
+  }
+
+  // Visual concept
+  var vc = d.visual_concept || {};
+  if (vc.image_prompt || vc.description) {
+    var prompt = vc.image_prompt || '';
+    if (!window.KPOP_PROMPTS) window.KPOP_PROMPTS = [];
+    var pidx = prompt ? window.KPOP_PROMPTS.push(prompt) - 1 : -1;
+    var palArr = vc.color_palette || [];
+    var colorsHtml = palArr.map(function(c) {
+      return '<div class="vis-chip" style="background:'+c+';color:'+(isLight(c)?'#000':'#fff')+'">'+c+'</div>';
+    }).join('');
+    var kwArr = vc.keywords || [];
+    var kwHtml = kwArr.map(function(k){ return '<span class="ctag">'+k+'</span>'; }).join('');
+    h += '<div class="ai-result-card">'
+      + '<div class="ar-title">🎨 비주얼 컨셉</div>'
+      + (vc.description ? '<div class="ar-text">' + vc.description + '</div>' : '')
+      + (prompt ? '<div class="visual-block" style="margin-top:10px">'
+        + '<div style="display:flex;justify-content:space-between;margin-bottom:6px">'
+        + '<span style="font-family:var(--mono);font-size:9px;color:var(--text3)">IMAGE PROMPT</span>'
+        + '<button class="copy-btn" onclick="copyPrompt(window.KPOP_PROMPTS['+pidx+'],this)">복사</button>'
+        + '</div>'
+        + '<div class="vis-prompt">'+prompt+'</div>'
+        + (colorsHtml ? '<div class="vis-colors">'+colorsHtml+'</div>' : '')
+        + (kwHtml ? '<div class="ctags">'+kwHtml+'</div>' : '')
+        + '<div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--text3)">↑ <a href="https://nanobanana.io/" target="_blank" style="color:var(--cyan);text-decoration:none">Nanobanana</a> / Midjourney / DALL-E에 사용</div>'
+        + '</div>' : '')
+      + '</div>';
+  }
+
+  return h || '<div style="color:var(--text3);padding:20px;text-align:center">결과 없음</div>';
+}
+
 async function runPlanner() {
   if (!API_KEY) { openApiModal(); return; }
   var btn = document.getElementById('plan-btn');
   var results = document.getElementById('plan-results');
-  var idea = document.getElementById('plan-input').value.trim();
+  var idea = (document.getElementById('plan-idea') || document.getElementById('plan-input') || {value:''}).value.trim();
   if (!idea) { results.innerHTML = '<div class="ai-idle"><div class="ai-idle-icon">💡</div><div class="ai-idle-text">기획 아이디어를 입력해주세요.</div></div>'; return; }
 
   btn.disabled = true;
   results.innerHTML = '<div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-text">✨ 기획 생성 중...</div></div>';
 
-  const SYSTEM = `You are a K-pop/Pop A&R expert. Respond with ONLY a valid JSON object. Start with {. No markdown.
-{"concept_summary":"Korean 2 sentences","similar_artists":[{"name":"Artist","reason":"Korean","spotify_url":"https://open.spotify.com/search/ARTIST"}],"reference_songs":[{"title":"Song","artist":"Artist","year":"2024","bpm":128,"key":"A minor","reason":"Korean","spotify_url":"https://open.spotify.com/search/SONG+ARTIST"}],"production_brief":{"genre":"specific subgenre","bpm":"128","key":"A minor","chord_progression":"i-VI-III-VII","hook_concept":"Korean","production_notes":"Korean 2 sentences"},"splice_packs":[{"query":"2-4 terms","type":"loops","reason":"Korean","bpm_hint":"128"}],"visual_concept":{"description":"Korean","image_prompt":"English 40 words","color_palette":["#HEX1","#HEX2","#HEX3"],"keywords":["kw1","kw2"]},"suno_prompt":"English max 500 chars [genre] [BPM] instruments vocal structure"}
-3-4 similar_artists, 4-5 reference_songs BPM within +-15, 4 splice_packs, suno under 500 chars.`;
+  var mood = (document.getElementById('plan-mood') || {value:''}).value;
+  var group = (document.getElementById('plan-group') || {value:''}).value;
 
-  const USER = `곡 기획 아이디어: ${idea}\n\n위 아이디어를 분석해서 K-pop/Pop 프로덕션 브리프를 JSON으로 작성해주세요.`;
+  var SYSTEM = 'K-pop/Pop A&R expert. Return ONLY valid JSON starting with {. No markdown. Fields: concept_summary(Korean), similar_artists(array with name/reason/spotify_url), reference_songs(array with title/artist/year/bpm/key/reason/spotify_url), production_brief(genre/bpm/key/chord_progression/hook_concept/production_notes), splice_packs(array with query/type/reason/bpm_hint), visual_concept(description/image_prompt/color_palette/keywords), suno_prompt(English max 500 chars).';
+
+  var USER = '곡 기획 아이디어: ' + idea + (mood ? ' (무드: '+mood+')' : '') + (group ? ' (타겟: '+group+')' : '') + '. K-pop/Pop 프로덕션 브리프를 JSON으로 작성해주세요. 3 similar_artists, 4 reference_songs BPM matched, 4 splice_packs.';
 
   try {
     const text = await callClaude(SYSTEM, USER, false, 5000);
@@ -1442,13 +1711,15 @@ async function runPlanner() {
     var pBrief = data.production_brief || {};
     addToHistory('plan', pBrief.genre || idea.slice(0,25), pBrief.bpm ? 'BPM '+pBrief.bpm : '', pH);
   } catch(e) {
-    var lines = e.message.split('\n');
+    var errFull = (e.name ? e.name + ': ' : '') + (e.message || String(e));
+    var lines = errFull.split('\n');
     results.innerHTML = '<div class="ai-idle" style="text-align:left;padding:24px">'
       + '<div style="font-size:20px;margin-bottom:8px">⚠</div>'
       + '<div style="font-family:var(--mono);font-size:12px;color:var(--pink);font-weight:700;margin-bottom:6px">' + (lines[0]||'오류') + '</div>'
-      + '<div style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8">' + lines.slice(1).map(function(l){return '<div>'+l+'</div>';}).join('') + '</div>'
+      + '<div style="font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8">' + lines.slice(1).map(function(l){return '<div>'+l+'</div>';}).join('') + (e.stack?'<div style="margin-top:6px;opacity:.5;font-size:9px">'+e.stack.split('\n').slice(1,3).join(' | ')+'</div>':'') + '</div>'
       + '<button onclick="runPlanner()" style="margin-top:14px;padding:8px 16px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;color:var(--text2);font-size:12px;cursor:pointer;">↻ 다시 시도</button>'
       + '</div>';
+    console.error('runPlanner error:', e);
   }
   btn.disabled = false;
 }
@@ -1644,7 +1915,305 @@ function buildTrendResult(d) {
 }
 
 
-window.addEventListener('DOMContentLoaded', init);
+// ─── REFERENCE BOARD ──────────────────────────────────────────────
+var REF_TRACKS = []; // {id, url, title, artist, genre, mood, bpm, key, note, cluster}
+
+function loadRefTracks() {
+  try { var r = localStorage.getItem('ref_tracks'); if(r) REF_TRACKS = JSON.parse(r); } catch(e){}
+}
+function saveRefTracks() {
+  try { localStorage.setItem('ref_tracks', JSON.stringify(REF_TRACKS)); } catch(e){}
+}
+
+// Detect platform from URL
+function detectPlatform(url) {
+  if (!url) return 'unknown';
+  if (url.includes('spotify.com')) return 'Spotify';
+  if (url.includes('youtube.com') || url.includes('youtu.be')) return 'YouTube';
+  if (url.includes('soundcloud.com')) return 'SoundCloud';
+  if (url.includes('music.apple.com')) return 'Apple Music';
+  return 'Link';
+}
+
+function platformIcon(p) {
+  if (p === 'Spotify') return '🎵';
+  if (p === 'YouTube') return '▶';
+  if (p === 'SoundCloud') return '☁';
+  return '🔗';
+}
+
+async function addReference() {
+  if (!API_KEY) { openApiModal(); return; }
+  var input = document.getElementById('ref-url-input').value.trim();
+  var note = document.getElementById('ref-note-input').value.trim();
+  if (!input) { document.getElementById('ref-url-input').focus(); return; }
+
+  var btn = document.getElementById('ref-add-btn');
+  btn.disabled = true;
+  btn.textContent = 'AI 분석 중...';
+
+  // Detect if input is a URL or a song name
+  var isUrl = input.startsWith('http') || input.includes('spotify.com') || input.includes('youtube.com') || input.includes('soundcloud.com');
+  var url = isUrl ? input : '';
+  var platform = isUrl ? detectPlatform(input) : 'Search';
+
+  // If "Artist - Song" or "Song by Artist" format, extract
+  var trackInfo = { title: '', artist: '' };
+  if (!isUrl) {
+    var dashIdx = input.indexOf(' - ');
+    if (dashIdx > 0) {
+      trackInfo.artist = input.slice(0, dashIdx).trim();
+      trackInfo.title = input.slice(dashIdx + 3).trim();
+    } else {
+      trackInfo.title = input;
+    }
+  }
+
+  var SYS = 'You are a music analyst. Analyze a reference track and return ONLY a JSON object.\n{"title":"song title","artist":"artist name","genre":"specific production subgenre e.g. dark trap/future bass/contemporary R&B/dance pop/hyperpop/Y2K pop/synth pop/neo soul","mood":"2-3 word English mood e.g. dreamy melancholic, dark aggressive","bpm_range":"estimated BPM range e.g. 120-130","key":"estimated key e.g. A minor","cluster":"one of: Dark Trap|Future Bass|R&B Soul|Dance Pop|Hyperpop|Experimental|Y2K Pop|Cinematic|Hip Hop|Indie Alt","tags":["tag1","tag2","tag3"],"why_reference":"Korean 1-2 sentences why this is useful as reference"}';
+
+  var trackDesc = (trackInfo.title ? 'Song: "' + trackInfo.title + '"' + (trackInfo.artist ? ' by ' + trackInfo.artist : '') + '\n' : '')
+    + (url ? 'URL: ' + url + '\nPlatform: ' + platform + '\n' : '')
+    + (note ? 'Note: ' + note + '\n' : '')
+    + (isUrl && !trackInfo.title ? 'This is a music URL. Analyze based on URL context and platform.\n' : '')
+    + 'Analyze this track as a music reference. If you know this song, provide accurate genre, mood, BPM range, and key from your knowledge.';
+
+  try {
+    var text = await callClaude(SYS, trackDesc, false, 3500);
+    var data = parseJSON(text);
+    if (!data) throw new Error('분석 실패');
+
+    // Use oEmbed data if AI returned Unknown
+    if (trackInfo.title && (!data.title || data.title.includes('Unknown'))) data.title = trackInfo.title;
+    if (trackInfo.artist && (!data.artist || data.artist.includes('Unknown'))) data.artist = trackInfo.artist;
+
+    var track = {
+      id: Date.now(),
+      url: url || ('https://open.spotify.com/search/' + encodeURIComponent(input)),
+      platform: platform,
+      title: data.title || trackInfo.title || url.split('/').pop(),
+      artist: data.artist || trackInfo.artist || '',
+      genre: data.genre || '—',
+      mood: data.mood || '—',
+      bpm_range: data.bpm_range || '—',
+      key: data.key || '—',
+      cluster: data.cluster || 'Experimental',
+      tags: data.tags || [],
+      note: note,
+      why: data.why_reference || '',
+    };
+
+    REF_TRACKS.unshift(track);
+    saveRefTracks();
+    renderRefClusters();
+
+    document.getElementById('ref-url-input').value = '';
+    document.getElementById('ref-note-input').value = '';
+  } catch(e) {
+    alert('오류: ' + e.message);
+  }
+
+  btn.disabled = false;
+  btn.textContent = '+ 추가 & 분석';
+}
+
+
+function deleteRefTrack(id) {
+  REF_TRACKS = REF_TRACKS.filter(function(t){ return t.id !== id; });
+  saveRefTracks();
+  renderRefClusters();
+}
+
+function renderRefClusters() {
+  var container = document.getElementById('ref-clusters');
+  if (!container) return;
+
+  if (!REF_TRACKS.length) {
+    container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text3);font-size:12px">아직 추가된 레퍼런스가 없어요.</div>';
+    return;
+  }
+
+  // Group by cluster
+  var clusters = {};
+  REF_TRACKS.forEach(function(t) {
+    var c = t.cluster || 'Other';
+    if (!clusters[c]) clusters[c] = [];
+    clusters[c].push(t);
+  });
+
+  var CLUSTER_COLORS = {
+    'Dark Trap': 'var(--pink)', 'Future Bass': 'var(--cyan)', 'R&B Soul': '#FFB800',
+    'Dance Pop': '#2ECC71', 'Hyperpop': '#FF6E1F', 'Experimental': 'var(--purple)',
+    'Y2K Pop': '#FF69B4', 'Cinematic': '#4D9FFF', 'Hip Hop': '#E67E22', 'Indie Alt': '#1ABC9C'
+  };
+
+  container.innerHTML = Object.keys(clusters).map(function(cluster) {
+    var tracks = clusters[cluster];
+    var color = CLUSTER_COLORS[cluster] || 'var(--text2)';
+    var cards = tracks.map(function(t) {
+      return '<div class="ref-card">'
+        + '<button class="ref-card-del" onclick="deleteRefTrack('+t.id+')">×</button>'
+        + '<div class="ref-card-title">' + (t.title || 'Unknown') + '</div>'
+        + '<div style="font-size:10px;color:var(--text3);margin-bottom:4px">' + (t.artist||'') + '</div>'
+        + '<div class="ref-card-meta">'
+        + '<span class="ref-card-genre">' + t.genre + '</span>'
+        + '<span class="ref-card-mood">' + t.mood + '</span>'
+        + (t.bpm_range && t.bpm_range!=='unknown'&&t.bpm_range!=='—' ? '<span style="color:var(--text3)">'+t.bpm_range+' BPM</span>' : '')
+        + '</div>'
+        + (t.why ? '<div style="font-size:10px;color:var(--text3);margin-top:5px;line-height:1.5">'+t.why+'</div>' : '')
+        + (t.note ? '<div style="font-size:10px;color:var(--gold);margin-top:3px">💬 '+t.note+'</div>' : '')
+        + '<div class="ref-card-links" style="margin-top:6px">'
+        + '<a href="'+t.url+'" target="_blank" style="display:inline-flex;align-items:center;gap:3px;background:var(--bg4);border:1px solid var(--border);border-radius:5px;padding:3px 8px;color:var(--text3);font-size:9px;text-decoration:none;font-family:var(--mono)">'
+        + platformIcon(t.platform) + ' ' + (t.platform||'Link') + '</a>'
+        + (t.tags && t.tags.length ? t.tags.map(function(tg){return '<span style="background:rgba(255,255,255,.04);border-radius:4px;padding:2px 6px;font-size:9px;color:var(--text3);font-family:var(--mono)">#'+tg+'</span>';}).join('') : '')
+        + '</div>'
+        + '</div>';
+    }).join('');
+
+    return '<div class="ref-cluster">'
+      + '<div class="ref-cluster-hdr">'
+      + '<div class="ref-cluster-title" style="color:'+color+'">'+cluster+'</div>'
+      + '<div class="ref-cluster-count">'+tracks.length+'곡</div>'
+      + '</div>'
+      + '<div class="ref-card-list">'+cards+'</div>'
+      + '</div>';
+  }).join('');
+
+  // Update stats
+  var statsEl = document.getElementById('ref-stats-row');
+  if (statsEl) {
+    statsEl.style.display = 'flex';
+    statsEl.innerHTML = '<span class="ref-stat-chip">총 '+REF_TRACKS.length+'곡</span>'
+      + '<span class="ref-stat-chip">'+Object.keys(clusters).length+'개 클러스터</span>'
+      + '<button onclick="REF_TRACKS=[];saveRefTracks();renderRefClusters();" style="background:none;border:none;color:var(--text3);font-size:10px;cursor:pointer;margin-left:auto">🗑 전체 삭제</button>';
+  }
+}
+
+// Handle drag & drop of audio file
+function handleTrackDrop(e) {
+  e.preventDefault();
+  document.getElementById('ref-drop-zone').classList.remove('drag-over');
+  var files = e.dataTransfer.files;
+  if (files.length > 0) processTrackFile(files[0]);
+}
+
+function handleTrackFile(input) {
+  if (input.files.length > 0) processTrackFile(input.files[0]);
+}
+
+function processTrackFile(file) {
+  var name = file.name.replace(/\.[^/.]+$/, '');
+  var size = (file.size / 1024 / 1024).toFixed(1);
+  // Pre-fill description with filename
+  var desc = document.getElementById('ref-track-desc');
+  if (desc && !desc.value) {
+    desc.value = '파일명: ' + name + '\n';
+    desc.focus();
+  }
+  document.getElementById('ref-drop-zone').innerHTML =
+    '<div class="ref-drop-icon">✅</div>'
+    + '<div class="ref-drop-title">' + name + '</div>'
+    + '<div class="ref-drop-sub">' + size + 'MB — 아래에 트랙 특징을 묘사해주세요</div>';
+}
+
+async function analyzeMyTrack() {
+  if (!API_KEY) { openApiModal(); return; }
+  var desc = document.getElementById('ref-track-desc').value.trim();
+  if (!desc) {
+    document.getElementById('ref-track-desc').focus();
+    return;
+  }
+
+  var result = document.getElementById('ref-track-result');
+  result.innerHTML = '<div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-text">🔍 레퍼런스 탐색 중...</div></div>';
+
+  var SYS = 'You are a K-pop/pop music producer and A&R expert. Based on a track description, suggest similar reference songs and production direction. Respond ONLY with valid JSON.\n{"analysis":{"genre":"specific subgenre","mood":"English 2-3 words","energy":"high|mid|low","bpm_estimate":"e.g. 120-130","key_feel":"e.g. minor, dark, bright"},"references":[{"title":"song title","artist":"artist","year":"2023","why":"Korean: 왜 레퍼런스로 좋은지 1문장","spotify_url":"https://open.spotify.com/search/SONG+ARTIST","bpm":128}],"production_direction":{"next_step":"Korean: 지금 당장 해야 할 것 1-2문장","arrangement":"Korean: 편곡 방향","sound_design":"Korean: 사운드 디자인 포인트","hook_direction":"Korean: 훅을 어떻게 발전시킬지","mixdown":"Korean: 믹스 방향","avoid":"Korean: 피해야 할 것"},"splice_suggestions":[{"query":"2-4 word search query","type":"loops"},{"query":"2-4 word query","type":"one_shots"}]}';
+
+  var USR = '내 트랙 묘사:\n' + desc + '\n\n이 트랙과 비슷한 레퍼런스 5-6개와 프로덕션 방향을 알려주세요.';
+
+  try {
+    var text = await callClaude(SYS, USR, false, 4000); // Sonnet for track analysis
+    var data = parseJSON(text);
+    if (!data) throw new Error('분석 실패 — 다시 시도해주세요');
+
+    var Q = encodeURIComponent;
+    var an = data.analysis || {};
+    var refs = data.references || [];
+    var dir = data.production_direction || {};
+    var spl = data.splice_suggestions || [];
+
+    var h = '';
+
+    // Analysis badge
+    h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">'
+      + (an.genre ? '<span class="ref-card-genre" style="font-size:10px;padding:3px 8px">'+an.genre+'</span>' : '')
+      + (an.mood ? '<span class="ref-card-mood" style="font-size:10px;padding:3px 8px">'+an.mood+'</span>' : '')
+      + (an.bpm_estimate ? '<span style="background:rgba(255,184,0,.1);color:var(--gold);border-radius:4px;padding:3px 8px;font-size:10px;font-family:var(--mono)">'+an.bpm_estimate+' BPM</span>' : '')
+      + (an.energy ? '<span style="background:rgba(255,255,255,.05);color:var(--text3);border-radius:4px;padding:3px 8px;font-size:10px;font-family:var(--mono)">'+an.energy+'</span>' : '')
+      + '</div>';
+
+    // References
+    if (refs.length) {
+      h += '<div class="ref-section-title">🎵 레퍼런스 곡</div>';
+      refs.forEach(function(r) {
+        var url = r.spotify_url || ('https://open.spotify.com/search/'+Q((r.title||'')+' '+(r.artist||'')));
+        h += '<div class="ref-card" style="margin-bottom:6px">'
+          + '<div class="ref-card-title">'+r.title+' <span style="color:var(--text3);font-weight:400">— '+r.artist+'</span></div>'
+          + (r.bpm ? '<div style="font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:3px">BPM '+r.bpm+(r.year?' · '+r.year:'')+'</div>' : '')
+          + (r.why ? '<div style="font-size:11px;color:var(--text2);margin-bottom:6px">'+r.why+'</div>' : '')
+          + '<a href="'+url+'" target="_blank" style="display:inline-flex;align-items:center;gap:3px;background:rgba(30,215,96,.08);border:1px solid rgba(30,215,96,.2);border-radius:5px;padding:3px 8px;color:#1ED760;font-size:9px;text-decoration:none;font-family:var(--mono)">'+SP_SVG+'Spotify</a>'
+          + '</div>';
+      });
+    }
+
+    // Production direction
+    if (dir.next_step) {
+      h += '<div class="ref-section-title" style="margin-top:16px">🎛 프로덕션 방향</div>';
+      var dirFields = [
+        ['다음 단계', dir.next_step, 'var(--pink)'],
+        ['편곡 방향', dir.arrangement, 'var(--cyan)'],
+        ['사운드 디자인', dir.sound_design, 'var(--purple)'],
+        ['훅 발전', dir.hook_direction, 'var(--gold)'],
+        ['믹스 방향', dir.mixdown, 'var(--text2)'],
+        ['피할 것', dir.avoid, 'var(--text3)'],
+      ];
+      h += '<div class="lead-sheet-grid">';
+      dirFields.forEach(function(f) {
+        if (!f[1]) return;
+        h += '<div class="ls-field full"><div class="ls-label">'+f[0]+'</div><div class="ls-val" style="color:'+f[2]+';font-size:11px">'+f[1]+'</div></div>';
+      });
+      h += '</div>';
+    }
+
+    // Splice suggestions
+    if (spl.length) {
+      h += '<div class="ref-section-title" style="margin-top:14px">🎛 Splice 샘플 추천</div>';
+      h += '<div style="display:flex;flex-direction:column;gap:5px">';
+      spl.forEach(function(p) {
+        var url = 'https://splice.com/sounds/search?q='+Q(p.query||'')+'&type='+(p.type||'loops');
+        h += '<a href="'+url+'" target="_blank" style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;text-decoration:none">'
+          + SPL_SVG
+          + '<span style="font-size:11px;color:var(--text2)">'+p.query+'</span>'
+          + '<span style="margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--text3)">'+p.type+'</span>'
+          + '</a>';
+      });
+      h += '</div>';
+    }
+
+    result.innerHTML = h;
+
+  } catch(e) {
+    result.innerHTML = '<div style="color:var(--pink);font-size:12px;padding:16px">⚠ ' + e.message + '</div>';
+  }
+}
+
+// Load on init
+function initRefBoard() {
+  loadRefTracks();
+  renderRefClusters();
+}
+
+
+window.addEventListener('DOMContentLoaded', function(){ init(); initRefBoard(); });
 </script>
 </body>
 </html>
