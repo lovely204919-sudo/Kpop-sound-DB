@@ -444,6 +444,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
       Chosic
     </a>
     <button class="api-btn" id="api-btn" onclick="openApiModal()">⚙ API Key</button>
+    <button class="api-btn" style="background:rgba(255,45,107,.08);border-color:rgba(255,45,107,.2);color:var(--pink)" onclick="if(confirm('모든 곡 분석 캐시를 삭제할까요?')){SONG_CACHE={};try{localStorage.removeItem('kpop_song_cache');}catch(e){}alert('캐시 삭제 완료. 다시 분석하면 최신 데이터로 채워집니다.');}">🗑 캐시 초기화</button>
   </div>
 </header>
 
@@ -929,6 +930,18 @@ function tunebatUrl(song,artist){return 'https://tunebat.com/Search?q='+encodeUR
 function bpmColor(bpm){var n=parseInt(bpm)||0;if(!n)return'#5A5870';if(n<80)return'#4D9FFF';if(n<100)return'#00E5C8';if(n<120)return'#2ECC71';if(n<140)return'#FFB800';if(n<160)return'#FF6E1F';return'#FF2D6B';}
 
 var ARCH_GENRE_LABEL = {"정교한 보컬 팝 / SMP": "Dance-pop / R&B-pop", "네오 실험형 / 베이스 중심": "Experimental / Neo-bass", "다크 신스팝 / emo-pop": "Dark synth-pop / Emo-pop", "다크 판타지 / 록 결합형": "Rock-pop / Cinematic", "레트로 그루브 / 디스코형": "Nu-disco / Funk", "몽환 감성형 / 인디 감도": "Dream-pop / Indie", "미래지향 실험 팝": "Hyperpop / Future bass", "보컬 감성형 / 멜로디 중심": "Melodic pop / R&B-pop", "보컬 중심 / 감성 멜로디형": "Contemporary R&B / Neo-soul", "스웨그 힙합 / 미니멀 드롭": "Trap / Dark hip-hop", "우아 / 시크 멜로디형": "Sleek R&B / Neo-soul", "운동감 있는 자신감형 퍼포먼스": "Dance-pop / Anthem", "이지리스닝 / Y2K 무드": "Y2K pop / Synth-pop", "전투형 퍼포먼스 / 하드 드라이브": "Hard trap / Cinematic", "청량 생활형 / easy listening": "Indie-pop / Clean pop", "컨셉 실험형 / 감각 지향": "Art-pop / Alt-R&B", "코에드 하이브리드 / 팝-랩 교차": "Pop-rap / Club pop", "틴프레시 / 밝은 멜로디형": "Teen pop / Bright indie", "핫걸 R&B / 2000s 복원": "Y2K R&B / Neo-soul", "글로벌 소프트팝 / 프로젝트형": "Soft pop / Indie-pop"};
+
+
+function clearSongCache(g) {
+  if (!g) return;
+  delete SONG_CACHE[g.name];
+  try { localStorage.removeItem('kpop_song_cache'); localStorage.setItem('kpop_song_cache', JSON.stringify(SONG_CACHE)); } catch(e) {}
+  // Re-render the section and trigger fresh analysis
+  var html2 = buildSongAnalysisSection(g);
+  var msec = document.querySelector('#m-body .msec:last-child');
+  if (msec) msec.outerHTML = html2;
+  setTimeout(function(){ runSongAnalysis(g); }, 200);
+}
 
 function buildSongAnalysisSection(g){
   var songs=[g.song1,g.song2,g.song3].filter(function(s){return s&&s!=='nan';});
