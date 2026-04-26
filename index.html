@@ -498,6 +498,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .spi-link.pack{background:rgba(255,184,0,.08);border-color:rgba(255,184,0,.2);color:var(--gold)}
 .rsi-reason{font-size:10px;color:var(--text3);line-height:1.5;margin-top:3px}
 
+
+/* ─── SONG ANALYZE ─── */
+.sa2-result{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+.sa2-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:18px}
+.sa2-card-title{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.sa2-song-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+.sa2-song-info{flex:1}
+.sa2-song-title{font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px}
+.sa2-song-artist{font-size:13px;color:var(--text3);font-family:var(--mono)}
+.sa2-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.sa2-badge{border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;font-family:var(--mono)}
+.sa2-badge.bpm{background:rgba(255,184,0,.1);color:var(--gold);border:1px solid rgba(255,184,0,.2)}
+.sa2-badge.key{background:rgba(0,229,200,.08);color:var(--cyan);border:1px solid rgba(0,229,200,.2)}
+.sa2-badge.mode{background:rgba(155,109,255,.1);color:var(--purple);border:1px solid rgba(155,109,255,.2)}
+.sa2-badge.genre{background:rgba(255,45,107,.08);color:var(--pink);border:1px solid rgba(255,45,107,.2)}
+.sa2-badge.energy{background:rgba(255,255,255,.05);color:var(--text2);border:1px solid var(--border)}
+.sa2-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.sa2-field{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
+.sa2-field-label{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.sa2-field-val{font-size:13px;font-weight:600;color:var(--text)}
+.sa2-chord-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px}
+.sa2-chord-prog{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--cyan);letter-spacing:.08em;margin-bottom:8px}
+.sa2-chord-notes{font-size:11px;color:var(--text3);line-height:1.7}
+.sa2-links-row{display:flex;gap:8px;flex-wrap:wrap}
+
 /* Responsive */
 @media(max-width:768px){
   .hdr-stat{display:none}
@@ -536,6 +561,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <button class="nav-t" onclick="switchTab('planner',this)">✨ 곡 아이디어 플래너</button>
   <button class="nav-t" onclick="switchTab('trend',this)">📰 오늘의 트렌드 브리핑</button>
   <button class="nav-t" onclick="switchTab('refboard',this)">🎧 레퍼런스 보드</button>
+  <button class="nav-t" onclick="switchTab('songanalyze',this)">🔬 곡 분석</button>
 </div>
 
 <div class="main">
@@ -750,6 +776,46 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   </div>
 </div>
 
+
+<!-- ─── SONG ANALYZE TAB ─────────────────────────────────────────── -->
+<div class="tab" id="tab-songanalyze">
+  <div class="sec-hdr">
+    <div class="sec-t">🔬 곡 분석</div>
+    <div class="sec-s">기성곡의 코드 진행 · Key · BPM · 구조를 AI + 웹 검색으로 분석해요</div>
+  </div>
+
+  <div style="max-width:680px;margin:0 auto">
+    <!-- Input -->
+    <div class="ai-form-card">
+      <div class="ai-form-title">🎵 곡 입력</div>
+      <div style="display:flex;gap:8px;margin-bottom:8px">
+        <input id="sa2-input" type="text"
+          style="flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:12px 16px;color:var(--text);font-size:13px;outline:none"
+          placeholder="예: aespa - Supernova  또는  Blinding Lights The Weeknd"
+          onkeydown="if(event.key==='Enter') analyzeSong2()"/>
+        <button onclick="analyzeSong2()" id="sa2-btn"
+          style="background:linear-gradient(135deg,var(--cyan),var(--purple));border:none;border-radius:10px;padding:12px 20px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">
+          🔍 분석
+        </button>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="font-size:10px;color:var(--text3)">예시:</span>
+        <button onclick="document.getElementById('sa2-input').value='aespa - Supernova';analyzeSong2()"
+          style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:3px 10px;color:var(--text3);font-size:10px;cursor:pointer">aespa - Supernova</button>
+        <button onclick="document.getElementById('sa2-input').value='NewJeans - How Sweet';analyzeSong2()"
+          style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:3px 10px;color:var(--text3);font-size:10px;cursor:pointer">NewJeans - How Sweet</button>
+        <button onclick="document.getElementById('sa2-input').value='Stray Kids - MIROH';analyzeSong2()"
+          style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:3px 10px;color:var(--text3);font-size:10px;cursor:pointer">Stray Kids - MIROH</button>
+        <button onclick="document.getElementById('sa2-input').value='Blinding Lights - The Weeknd';analyzeSong2()"
+          style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:3px 10px;color:var(--text3);font-size:10px;cursor:pointer">Blinding Lights</button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="sa2-result"></div>
+  </div>
+</div>
+
 </div><!-- /.main -->
 
 <!-- ─── GROUP MODAL ─── -->
@@ -904,6 +970,8 @@ function init() {
   // Initialize empty history panels
   _loadHist();
   loadSongCache();
+  USER_ACCESS_TOKEN = localStorage.getItem('kpop_user_token') || '';
+  loadSa2Cache();
   renderHistory('plan');
   renderHistory('trend');
 }
@@ -1459,8 +1527,14 @@ function switchTab(name, btn) {
 }
 
 // ─── CLAUDE API CALL ─────────────────────────────────────────────
+// ─── WORKER CONFIG ───────────────────────────────────────────────
+// Worker URL을 설정하면 본인 API 키 없이 사용 가능
+// Cloudflare Worker 배포 후 URL 입력
+var WORKER_URL = ''; // 예: https://kpop-proxy.your-name.workers.dev
+var USER_ACCESS_TOKEN = localStorage.getItem('kpop_user_token') || '';
+
 async function callClaude(systemPrompt, userMsg, useWebSearch, maxTok, _unused) {
-  if (!API_KEY) { openApiModal(); throw new Error('API 키가 없습니다. ⚙ 버튼을 눌러 입력해주세요.'); }
+  if (!API_KEY && !(WORKER_URL && WORKER_URL.trim())) { openApiModal(); throw new Error('API 키가 없습니다. ⚙ 버튼을 눌러 입력해주세요.'); }
 
   var model = 'claude-haiku-4-5-20251001'; // Haiku confirmed working
   var tokens = maxTok || 3000;
@@ -1476,14 +1550,27 @@ async function callClaude(systemPrompt, userMsg, useWebSearch, maxTok, _unused) 
     body.tools = [{ type: 'web_search_20250305', name: 'web_search' }];
   }
 
-  var fetchPromise = fetch('https://api.anthropic.com/v1/messages', {
+  // Use Worker URL if set (no API key needed), else use direct Anthropic API
+  var endpoint = (WORKER_URL && WORKER_URL.trim())
+    ? WORKER_URL.trim()
+    : 'https://api.anthropic.com/v1/messages';
+
+  var fetchHeaders = { 'Content-Type': 'application/json' };
+
+  if (WORKER_URL && WORKER_URL.trim()) {
+    // Worker mode — use access token instead of API key
+    if (USER_ACCESS_TOKEN) fetchHeaders['x-user-token'] = USER_ACCESS_TOKEN;
+  } else {
+    // Direct mode — use API key
+    if (!API_KEY) { openApiModal(); throw new Error('API 키가 없습니다. ⚙ 버튼을 눌러 입력해주세요.'); }
+    fetchHeaders['x-api-key'] = API_KEY;
+    fetchHeaders['anthropic-version'] = '2023-06-01';
+    fetchHeaders['anthropic-dangerous-direct-browser-access'] = 'true';
+  }
+
+  var fetchPromise = fetch(endpoint, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': API_KEY,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true'
-    },
+    headers: fetchHeaders,
     body: JSON.stringify(body)
   });
 
@@ -1914,6 +2001,147 @@ function buildTrendResult(d) {
   return h;
 }
 
+
+
+// ─── SONG ANALYZE 2 ───────────────────────────────────────────────
+var SA2_CACHE = {};
+
+function loadSa2Cache() {
+  try { var r = localStorage.getItem('kpop_sa2_cache'); if(r) SA2_CACHE = JSON.parse(r); } catch(e) {}
+}
+function saveSa2Cache() {
+  try { localStorage.setItem('kpop_sa2_cache', JSON.stringify(SA2_CACHE)); } catch(e) {}
+}
+
+async function analyzeSong2() {
+  if (!API_KEY && !(WORKER_URL && WORKER_URL.trim())) { openApiModal(); return; }
+
+  var input = document.getElementById('sa2-input').value.trim();
+  if (!input) { document.getElementById('sa2-input').focus(); return; }
+
+  var btn = document.getElementById('sa2-btn');
+  var result = document.getElementById('sa2-result');
+
+  // Check cache
+  var cacheKey = input.toLowerCase().trim();
+  if (SA2_CACHE[cacheKey]) {
+    renderSong2Result(SA2_CACHE[cacheKey], input);
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '분석 중...';
+  result.innerHTML = '<div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-text">🔍 웹 검색으로 곡 정보 수집 중...</div></div>';
+
+  var SYS = 'You are a music theory expert with deep knowledge of K-pop, pop, hip-hop, R&B, and all music genres. Use web search to find accurate music data for the requested song. Return ONLY a valid JSON object starting with {.\n{"song":{"title":"exact title","artist":"exact artist","year":"release year","album":"album name"},"music_theory":{"bpm":128,"bpm_source":"measured/estimated","key":"e.g. A minor","camelot":"e.g. 8A","mode":"minor|major","time_signature":"4/4","energy_level":"high|mid|low","danceability":"high|mid|low"},"chord_progression":{"main":"e.g. i-VI-III-VII","notation":"e.g. Am-F-C-G","loop_bars":"e.g. 4-bar loop","analysis":"Korean: 코드 진행의 특징 2문장","hook_chord":"e.g. F-C (후렴 코드)"},"production":{"genre":"specific subgenre","sub_genres":["sub1","sub2"],"tempo_feel":"e.g. driving/laid-back/bouncy","instruments":["instrument1","instrument2"],"vocal_style":"Korean 1 sentence","signature_sound":"Korean 1 sentence"},"for_producers":{"sample_if_you_like":"Korean: 이 곡과 비슷한 느낌 만들 때 팁","splice_query":"2-4 word Splice search query","reference_for":"Korean: 어떤 곡 만들 때 레퍼런스하면 좋은지"},"links":{"spotify_search":"https://open.spotify.com/search/SONG+ARTIST","tunebat":"https://tunebat.com/Search?q=SONG+ARTIST","chordify":"https://chordify.net/search/SONG+ARTIST"}}';
+
+  var USR = '곡: ' + input + '\n웹 검색으로 이 곡의 정확한 BPM, Key, 코드 진행, 장르, 프로덕션 특징을 찾아서 분석해주세요. 음악 이론적으로 정확한 정보를 제공해주세요.';
+
+  try {
+    var text = await callClaude(SYS, USR, true, 3500);
+    var data = parseJSON(text);
+    if (!data) throw new Error('[PARSE_ERROR] 분석 실패 — 다시 시도해주세요');
+
+    SA2_CACHE[cacheKey] = data;
+    saveSa2Cache();
+    renderSong2Result(data, input);
+  } catch(e) {
+    var lines = (e.message||'오류').split('\n');
+    result.innerHTML = '<div class="ai-idle" style="text-align:left;padding:24px">'
+      + '<div style="font-size:20px;margin-bottom:8px">⚠</div>'
+      + '<div style="font-family:var(--mono);font-size:12px;color:var(--pink);font-weight:700;margin-bottom:6px">' + (lines[0]||'오류') + '</div>'
+      + lines.slice(1).map(function(l){return '<div style="font-size:11px;color:var(--text3)">'+l+'</div>';}).join('')
+      + '<button onclick="analyzeSong2()" style="margin-top:12px;padding:8px 16px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;color:var(--text2);font-size:12px;cursor:pointer">↻ 다시 시도</button>'
+      + '</div>';
+  }
+  btn.disabled = false;
+  btn.textContent = '🔍 분석';
+}
+
+function renderSong2Result(d, input) {
+  var Q = encodeURIComponent;
+  var song = d.song || {};
+  var mt = d.music_theory || {};
+  var cp = d.chord_progression || {};
+  var prod = d.production || {};
+  var fp = d.for_producers || {};
+  var links = d.links || {};
+  var result = document.getElementById('sa2-result');
+  var h = '<div class="sa2-result">';
+
+  // Song header
+  var spUrl = links.spotify_search || ('https://open.spotify.com/search/' + Q((song.title||input) + ' ' + (song.artist||'')));
+  h += '<div class="sa2-card">'
+    + '<div class="sa2-song-header">'
+    + '<div class="sa2-song-info">'
+    + '<div class="sa2-song-title">' + (song.title||input) + '</div>'
+    + '<div class="sa2-song-artist">' + (song.artist||'') + (song.year?' · '+song.year:'') + (song.album?' · '+song.album:'') + '</div>'
+    + '<div class="sa2-badges">'
+    + (mt.bpm ? '<span class="sa2-badge bpm">♩ '+mt.bpm+' BPM'+(mt.bpm_source==='measured'?' ✓':'')+' </span>' : '')
+    + (mt.key ? '<span class="sa2-badge key">🎹 '+mt.key+'</span>' : '')
+    + (mt.camelot ? '<span class="sa2-badge mode">'+mt.camelot+'</span>' : '')
+    + (mt.mode ? '<span class="sa2-badge mode">'+mt.mode+'</span>' : '')
+    + (prod.genre ? '<span class="sa2-badge genre">'+prod.genre+'</span>' : '')
+    + (mt.energy_level ? '<span class="sa2-badge energy">energy: '+mt.energy_level+'</span>' : '')
+    + '</div>'
+    + '</div>'
+    + '<div style="display:flex;flex-direction:column;gap:5px">'
+    + '<a class="rsi-sp" href="'+spUrl+'" target="_blank" style="font-size:11px">'+SP_SVG+'Spotify</a>'
+    + (links.tunebat ? '<a class="tb-link" href="'+links.tunebat+'" target="_blank">'+TUNEBAT_SVG+' Tunebat</a>' : '')
+    + (links.chordify ? '<a class="tb-link" style="background:rgba(255,184,0,.08);border-color:rgba(255,184,0,.2);color:var(--gold)" href="'+links.chordify+'" target="_blank">🎵 Chordify</a>' : '')
+    + '</div>'
+    + '</div>';
+
+  // Music theory grid
+  h += '<div class="sa2-grid">'
+    + (mt.bpm ? '<div class="sa2-field"><div class="sa2-field-label">BPM</div><div class="sa2-field-val" style="color:var(--gold);font-size:20px">'+mt.bpm+'</div></div>' : '')
+    + (mt.key ? '<div class="sa2-field"><div class="sa2-field-label">Key</div><div class="sa2-field-val" style="color:var(--cyan)">'+mt.key+'</div></div>' : '')
+    + (mt.camelot ? '<div class="sa2-field"><div class="sa2-field-label">Camelot</div><div class="sa2-field-val" style="color:var(--purple)">'+mt.camelot+'</div></div>' : '')
+    + (mt.time_signature ? '<div class="sa2-field"><div class="sa2-field-label">박자</div><div class="sa2-field-val">'+mt.time_signature+'</div></div>' : '')
+    + (mt.danceability ? '<div class="sa2-field"><div class="sa2-field-label">댄서빌리티</div><div class="sa2-field-val">'+mt.danceability+'</div></div>' : '')
+    + '</div></div>';
+
+  // Chord progression
+  if (cp.main || cp.notation) {
+    h += '<div class="sa2-card">'
+      + '<div class="sa2-card-title">🎸 코드 진행</div>'
+      + '<div class="sa2-chord-wrap">'
+      + (cp.notation ? '<div class="sa2-chord-prog">'+cp.notation+'</div>' : '')
+      + (cp.main ? '<div style="font-family:var(--mono);font-size:12px;color:var(--text3);margin-bottom:6px">로마자: '+cp.main+'</div>' : '')
+      + (cp.loop_bars ? '<div style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:8px">'+cp.loop_bars+'</div>' : '')
+      + (cp.hook_chord ? '<div style="font-family:var(--mono);font-size:11px;color:var(--pink);margin-bottom:8px">🎵 후렴: '+cp.hook_chord+'</div>' : '')
+      + (cp.analysis ? '<div class="sa2-chord-notes">'+cp.analysis+'</div>' : '')
+      + '</div></div>';
+  }
+
+  // Production
+  if (prod.instruments || prod.vocal_style) {
+    h += '<div class="sa2-card">'
+      + '<div class="sa2-card-title">🎛 프로덕션</div>'
+      + '<div class="sa2-grid" style="margin-bottom:10px">'
+      + (prod.tempo_feel ? '<div class="sa2-field"><div class="sa2-field-label">템포 느낌</div><div class="sa2-field-val" style="font-size:12px">'+prod.tempo_feel+'</div></div>' : '')
+      + (prod.sub_genres && prod.sub_genres.length ? '<div class="sa2-field"><div class="sa2-field-label">서브장르</div><div class="sa2-field-val" style="font-size:11px">'+prod.sub_genres.join(', ')+'</div></div>' : '')
+      + '</div>'
+      + (prod.instruments && prod.instruments.length ? '<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">'+prod.instruments.map(function(i){return '<span style="background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:10px;color:var(--text3);font-family:var(--mono)">'+i+'</span>';}).join('')+'</div>' : '')
+      + (prod.vocal_style ? '<div style="font-size:11px;color:var(--text2);margin-bottom:4px">🎤 '+prod.vocal_style+'</div>' : '')
+      + (prod.signature_sound ? '<div style="font-size:11px;color:var(--text3)">✦ '+prod.signature_sound+'</div>' : '')
+      + '</div>';
+  }
+
+  // For producers
+  if (fp.sample_if_you_like || fp.splice_query) {
+    var splUrl = fp.splice_query ? 'https://splice.com/sounds/search?q='+Q(fp.splice_query)+'&type=loops' : '';
+    h += '<div class="sa2-card">'
+      + '<div class="sa2-card-title">💡 프로듀서 팁</div>'
+      + (fp.reference_for ? '<div style="font-size:12px;color:var(--text2);margin-bottom:8px;line-height:1.6">📌 '+fp.reference_for+'</div>' : '')
+      + (fp.sample_if_you_like ? '<div style="font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.6">🎹 '+fp.sample_if_you_like+'</div>' : '')
+      + (splUrl ? '<a href="'+splUrl+'" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;text-decoration:none">'+SPL_SVG+'<span style="font-size:11px;color:var(--text2)">'+fp.splice_query+'</span><span style="margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--text3)">Splice 검색</span></a>' : '')
+      + '</div>';
+  }
+
+  h += '</div>';
+  document.getElementById('sa2-result').innerHTML = h;
+}
 
 // ─── REFERENCE BOARD ──────────────────────────────────────────────
 var REF_TRACKS = []; // {id, url, title, artist, genre, mood, bpm, key, note, cluster}
